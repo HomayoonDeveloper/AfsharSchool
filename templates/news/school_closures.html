@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}تعطیلی مدارس | دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block meta_description %}اطلاعیه‌های تعطیلی دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block content %}
+  <section class="pt-44 pb-24 min-h-[50vh] flex items-center justify-center bg-[#f5f8fc]">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900">
+        تعطیلی مدارس
+      </h1>
+        <h1>
+            اطلاعیه تعطیلی مدارس
+        </h1>
+
+
+        {% if closures %}
+
+            {% for closure in closures %}
+
+                <article>
+
+                    <!-- عنوان -->
+                    <h2>
+                        {{ closure.title }}
+                    </h2>
+
+
+                    <!-- استان -->
+                    <p>
+                        <strong>استان:</strong>
+
+                        {{ closure.province }}
+                    </p>
+
+
+                    <!-- شهر -->
+                    {% if closure.city %}
+
+                        <p>
+                            <strong>شهر:</strong>
+
+                            {{ closure.city }}
+                        </p>
+
+                    {% endif %}
+
+
+                    <!-- تاریخ تعطیلی -->
+                    <p>
+                        <strong>تاریخ تعطیلی:</strong>
+
+                        {{ closure.closure_date|date:"Y/m/d" }}
+                    </p>
+
+
+                    <!-- توضیحات -->
+                    {% if closure.description %}
+
+                        <div>
+
+                            <strong>
+                                توضیحات:
+                            </strong>
+
+                            <p>
+                                {{ closure.description|linebreaks }}
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+
+
+                    <!-- زمان ثبت اطلاعیه -->
+                    <small>
+
+                        زمان ثبت اطلاعیه:
+
+                        {{ closure.created_at|date:"Y/m/d - H:i" }}
+
+                    </small>
+
+
+                    <hr>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>
+                در حال حاضر هیچ اطلاعیه‌ای برای تعطیلی مدارس ثبت نشده است.
+            </p>
+
+        {% endif %}
+
+
+    </div>
+  </section>
+{% endblock %}

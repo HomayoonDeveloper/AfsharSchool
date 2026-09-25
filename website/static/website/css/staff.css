@@ -1,0 +1,178 @@
+/* =========================================
+   کادر فنی — Leadership Cards
+========================================= */
+
+.leader-card {
+  position: relative;
+  background: #fff;
+  border-radius: 28px;
+  padding: 34px 26px 28px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(15, 76, 219, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.08);
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+}
+
+.leader-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 26px 55px rgba(15, 76, 219, 0.22);
+}
+
+.leader-card .leader-rank {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #1654d1;
+  background: #eef4ff;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.leader-avatar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  position: relative;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.leader-avatar::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(37, 99, 235, 0.35);
+  animation: spin 18s linear infinite;
+}
+
+.leader-card:hover .leader-avatar {
+  transform: scale(1.06);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.leader-name {
+  font-size: 19px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.leader-role {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1654d1;
+  margin-top: 4px;
+}
+
+.leader-desc {
+  font-size: 13.5px;
+  color: #64748b;
+  margin-top: 12px;
+  line-height: 1.9;
+}
+
+.leader-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1654d1;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #eef4ff;
+  transition: 0.3s;
+}
+
+.leader-card:hover .leader-more {
+  background: #1654d1;
+  color: #fff;
+  gap: 10px;
+}
+
+/* Connector line between tiers, org-chart feel */
+.org-connector {
+  position: relative;
+  height: 60px;
+  max-width: 6px;
+  margin: -20px auto 0;
+  background: linear-gradient(to bottom, #93c5fd, transparent);
+}
+
+/* =========================================
+   Support Staff Cards
+========================================= */
+
+.support-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 24px 18px;
+  text-align: center;
+  border: 1px solid #eef2f7;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(15, 76, 219, 0.14);
+  border-color: transparent;
+}
+
+.support-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 14px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #fff;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.support-card:hover .support-icon {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.support-name {
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.support-role {
+  font-size: 12.5px;
+  color: #94a3b8;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+/* Staff Modal (shared show states) */
+#staffModal.show {
+  display: flex;
+}
+
+#staffBox.show {
+  transform: scale(1);
+  opacity: 1;
+}

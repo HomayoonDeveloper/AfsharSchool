@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}اخبار مدرسه | دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block meta_description %}آخرین اخبار و اطلاعیه‌های دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'website/css/news.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <!-- ===================== Page Hero ===================== -->
+  <section class="relative pt-44 pb-20 bg-gradient-to-b from-[#0b2e6e] to-[#123c7c] overflow-hidden">
+    <div class="absolute -top-20 -left-20 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-300/10 rounded-full blur-3xl"></div>
+
+    <div class="max-w-5xl mx-auto px-6 text-center relative">
+      <span
+        class="inline-block px-5 py-2 rounded-full bg-white/10 text-blue-100 text-sm font-semibold mb-6"
+      >
+        اطلاعیه‌ها و رویدادها
+      </span>
+
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+        اخبار دبیرستان
+        <br />
+        میرزاحسن افشار
+      </h1>
+
+      <p class="mt-6 text-blue-100 leading-8 max-w-2xl mx-auto">
+        برای اطلاع از تاریخ ثبت‌نام، دریافت کارنامه، تعطیلی‌ها و سایر
+        اطلاعیه‌های رسمی مدرسه، این صفحه را دنبال کنید.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== News Grid ===================== -->
+  <section class="py-20 -mt-8">
+    <div class="max-w-6xl mx-auto px-6">
+      <div id="newsList" class="news-grid">
+        {% for item in news %}
+          {% include "news_card.html" %}
+        {% empty %}
+          <p class="news-empty">هنوز خبری منتشر نشده است.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

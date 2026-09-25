@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}کادر فنی | دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block meta_description %}آشنایی با کادر فنی، اجرایی و پشتیبانی دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'website/css/staff.css' %}" />
+{% endblock %}
+
+{% block content %}
+      <!-- ===================== Page Hero ===================== -->
+      <section class="relative pt-44 pb-20 bg-gradient-to-b from-[#0b2e6e] to-[#123c7c] overflow-hidden">
+        <div class="absolute -top-20 -left-20 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-300/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center relative">
+          <span
+            class="inline-block px-5 py-2 rounded-full bg-white/10 text-blue-100 text-sm font-semibold mb-6"
+          >
+            آشنایی با تیم مدرسه
+          </span>
+
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+            کادر فنی و اجرایی
+            <br />
+            دبیرستان میرزاحسن افشار
+          </h1>
+
+          <p class="mt-6 text-blue-100 leading-8 max-w-2xl mx-auto">
+            اداره‌ی روزمره‌ی مدرسه، از تصمیم‌گیری‌های آموزشی گرفته تا نظم
+            کلاس‌ها و آماده‌بودن سرویس بهداشتی و بوفه، به دست تیمی سپرده شده
+            که شاید کمتر دیده شود اما همیشه حاضر است. با آن‌ها آشنا شوید.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== Leadership Tier ===================== -->
+      <section class="py-24 -mt-8">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center max-w-xl mx-auto mb-14">
+            <p class="text-blue-700 font-bold mb-2">هیئت مدیریت</p>
+            <h2 class="text-3xl font-extrabold text-slate-900">
+              تصمیم‌سازان اصلی مدرسه
+            </h2>
+          </div>
+
+          <div id="leadershipGrid" class="grid md:grid-cols-3 gap-8"></div>
+        </div>
+      </section>
+
+      <!-- ===================== Connector ===================== -->
+      <div class="org-connector"></div>
+
+      <!-- ===================== Support Tier ===================== -->
+      <section class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-l from-transparent via-blue-200 to-transparent"></div>
+
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center max-w-xl mx-auto mb-14">
+            <p class="text-blue-700 font-bold mb-2">پشتیبان روزهای مدرسه</p>
+            <h2 class="text-3xl font-extrabold text-slate-900">
+              تیم اجرایی و خدماتی
+            </h2>
+            <p class="mt-4 text-slate-500 leading-8">
+              روی هر کارت بزنید تا بیشتر با نقش هرکدام در روال روزانه‌ی مدرسه
+              آشنا شوید.
+            </p>
+          </div>
+
+          <div id="supportGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+      </section>
+
+    <!-- Staff Detail Modal -->
+    <div
+      id="staffModal"
+      class="fixed inset-0 z-[10000] hidden items-center justify-center px-4"
+    >
+      <div id="staffOverlay" class="absolute inset-0 bg-[#071b3a]/70 backdrop-blur-sm"></div>
+
+      <div
+        id="staffBox"
+        class="relative w-full max-w-2xl max-h-[86vh] overflow-y-auto bg-white rounded-[28px] shadow-2xl scale-95 opacity-0 transition-all duration-300"
+      >
+        <div
+          id="staffModalHeader"
+          class="h-16 bg-gradient-to-l from-[#0F4CDB] via-[#2563EB] to-[#3B82F6] rounded-t-[28px] relative"
+        >
+          <button
+            id="closeStaffModal"
+            class="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white text-2xl leading-none flex items-center justify-center transition"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div class="px-8 pb-8">
+          <div class="flex items-end gap-5 -mt-12">
+            <div
+              id="staffModalAvatar"
+              class="w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-extrabold text-white shadow-xl border-4 border-white shrink-0"
+            ></div>
+
+            <div class="pb-1">
+              <h3 id="staffModalName" class="text-2xl font-extrabold text-slate-900"></h3>
+              <p id="staffModalRole" class="text-blue-700 font-semibold mt-1"></p>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-4 mt-8">
+            <div class="bg-blue-50 rounded-2xl p-4 text-center">
+              <p class="text-2xl font-extrabold text-blue-800" id="staffModalExp"></p>
+              <p class="text-xs text-slate-500 mt-1">سال سابقه</p>
+            </div>
+            <div class="bg-blue-50 rounded-2xl p-4 text-center">
+              <p class="text-lg font-extrabold text-blue-800" id="staffModalHours"></p>
+              <p class="text-xs text-slate-500 mt-1">ساعت حضور</p>
+            </div>
+            <div class="bg-blue-50 rounded-2xl p-4 text-center">
+              <p class="text-lg font-extrabold text-blue-800" id="staffModalContact"></p>
+              <p class="text-xs text-slate-500 mt-1">محل استقرار</p>
+            </div>
+          </div>
+
+          <div class="mt-7">
+            <h4 class="font-bold text-slate-800 mb-2">شرح مسئولیت</h4>
+            <p id="staffModalBio" class="text-slate-600 leading-8"></p>
+          </div>
+
+          <div class="mt-6 bg-slate-50 border-r-4 border-blue-600 rounded-xl p-5">
+            <p id="staffModalQuote" class="text-slate-700 leading-8 italic"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'website/js/staff.js' %}"></script>
+{% endblock %}

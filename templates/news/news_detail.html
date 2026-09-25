@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ news.title }}</title>
+</head>
+
+<body>
+
+    <main>
+
+        <article>
+
+            <!-- عنوان خبر -->
+            <h1>
+                {{ news.title }}
+            </h1>
+
+
+            <!-- تصویر خبر -->
+            {% if news.image %}
+
+                <img
+                    src="{{ news.image.url }}"
+                    alt="{{ news.title }}"
+                    width="600"
+                >
+
+            {% endif %}
+
+
+            <!-- زمان انتشار -->
+            <p>
+                منتشر شده در:
+                {{ news.created_at|date:"Y/m/d - H:i" }}
+            </p>
+
+
+            <!-- آخرین ویرایش -->
+            {% if news.updated_at != news.created_at %}
+
+                <p>
+                    آخرین ویرایش:
+                    {{ news.updated_at|date:"Y/m/d - H:i" }}
+                </p>
+
+            {% endif %}
+
+
+            <hr>
+
+
+            <!-- متن کامل خبر -->
+            <div>
+
+                {{ news.content|linebreaks }}
+
+            </div>
+
+
+        </article>
+
+
+        <!-- بازگشت به لیست اخبار -->
+        <br>
+
+        <a href="{% url 'news:important_news' %}">
+            ← بازگشت به اخبار مهم
+        </a>
+
+    </main>
+
+</body>
+
+</html>
+```

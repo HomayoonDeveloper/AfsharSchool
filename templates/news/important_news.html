@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}اخبار مهم | دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block meta_description %}اخبار مهم و اطلاعیه‌های ضروری دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block content %}
+  <section class="pt-44 pb-24 min-h-[50vh] flex items-center justify-center bg-[#f5f8fc]">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900">
+        اخبار مهم
+      </h1>
+           <h1>اخبار مهم</h1>
+
+        {% if news %}
+
+            {% for item in news %}
+
+                <article>
+
+                    <!-- تصویر خبر -->
+                    {% if item.image %}
+                        <img
+                            src="{{ item.image.url }}"
+                            alt="{{ item.title }}"
+                            width="300"
+                        >
+                    {% endif %}
+
+
+                    <!-- عنوان خبر -->
+                    <h2>
+                        {{ item.title }}
+                    </h2>
+
+
+                    <!-- زمان انتشار -->
+                    <p>
+                        زمان انتشار:
+                        {{ item.created_at|date:"Y/m/d - H:i" }}
+                    </p>
+
+
+                    <!-- خلاصه‌ای از متن خبر -->
+                    <p>
+                        {{ item.content|truncatewords:30 }}
+                    </p>
+
+
+                    <!-- لینک مشاهده کامل خبر -->
+                    <a href="{% url 'news:news_detail' item.id %}">
+                        مشاهده کامل خبر
+                    </a>
+
+                    <hr>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>
+                در حال حاضر هیچ خبر مهمی منتشر نشده است.
+            </p>
+
+        {% endif %}
+
+    </div>
+  </section>
+{% endblock %}

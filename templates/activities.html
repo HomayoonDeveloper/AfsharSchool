@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}فعالیت‌ها | دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block meta_description %}فعالیت‌ها، امکانات جدید و رویدادهای غیردرسی دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'website/css/activities.css' %}" />
+{% endblock %}
+
+{% block content %}
+      <!-- ===================== Page Hero ===================== -->
+      <section class="relative pt-44 pb-24 bg-gradient-to-br from-[#0F4CDB] via-[#2563EB] to-[#38bdf8] overflow-hidden">
+        <div class="activity-shape activity-shape-1"></div>
+        <div class="activity-shape activity-shape-2"></div>
+        <div class="activity-shape activity-shape-3"></div>
+
+        <div class="max-w-5xl mx-auto px-6 text-center relative">
+          <span
+            class="inline-block px-5 py-2 rounded-full bg-white/15 text-white text-sm font-semibold mb-6"
+          >
+            زندگی در مدرسه
+          </span>
+
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+            فعالیت‌ها و امکانات
+            <br />
+            دبیرستان میرزاحسن افشار
+          </h1>
+
+          <p class="mt-6 text-blue-50 leading-8 max-w-2xl mx-auto">
+            از امکانات تازه‌ی حیاط مدرسه تا رویدادهای تفریحی و ورزشی — هر
+            چیزی که مدرسه را برای دانش‌آموزان جذاب‌تر می‌کند، اینجاست.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== Activities Grid ===================== -->
+      <section class="py-20 -mt-10 relative">
+        <div class="max-w-6xl mx-auto px-6">
+          <div id="activitiesGrid" class="activities-grid"></div>
+        </div>
+      </section>
+
+    <!-- Activity Detail Modal -->
+    <div
+      id="activityModal"
+      class="fixed inset-0 z-[10000] hidden items-center justify-center px-4"
+    >
+      <div id="activityOverlay" class="absolute inset-0 bg-[#071b3a]/70 backdrop-blur-sm"></div>
+
+      <div
+        id="activityBox"
+        class="relative w-full max-w-2xl max-h-[86vh] overflow-y-auto bg-white rounded-[28px] shadow-2xl scale-95 opacity-0 transition-all duration-300"
+      >
+        <div
+          id="activityModalHeader"
+          class="h-40 relative flex items-end p-8"
+        >
+          <button
+            id="closeActivityModal"
+            class="absolute left-5 top-5 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white text-2xl leading-none flex items-center justify-center transition"
+          >
+            &times;
+          </button>
+
+          <span
+            id="activityModalIcon"
+            class="w-20 h-20 rounded-3xl bg-white/20 backdrop-blur flex items-center justify-center text-4xl text-white shrink-0"
+          ></span>
+        </div>
+
+        <div class="px-8 pb-9 pt-6">
+          <span id="activityModalTag" class="activity-tag"></span>
+
+          <h3 id="activityModalTitle" class="text-2xl font-extrabold text-slate-900 mt-3"></h3>
+
+          <div id="activityModalBody" class="mt-6 text-slate-600 leading-9 space-y-4"></div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'website/js/activities.js' %}"></script>
+{% endblock %}

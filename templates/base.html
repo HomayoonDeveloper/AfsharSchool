@@ -1,0 +1,384 @@
+{% load static %}
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{% block title %}دبیرستان دوره اول میرزاحسن افشار{% endblock %}</title>
+
+    <meta
+      name="description"
+      content="{% block meta_description %}وبسایت رسمی دبیرستان دوره اول میرزاحسن افشار{% endblock %}"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}" />
+    {% block extra_css %}{% endblock %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/6b6c13d2d7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body class="bg-[#f5f8fc] overflow-x-hidden">
+    <header>
+      <nav
+        id="navbar"
+        class="fixed top-5 left-1/2 -translate-x-1/2 z-[9999] w-[96%] max-w-7xl rounded-[28px]"
+      >
+        <div
+          id="navWrapper"
+          class="h-[82px] rounded-[28px] bg-gradient-to-r from-[#0F4CDB]/95 via-[#2563EB]/95 to-[#3B82F6]/95 backdrop-blur-xl shadow-[0_15px_45px_rgba(37,99,235,.22)] border border-white/15 transition-all duration-500"
+        >
+          <div class="h-full px-8 flex items-center justify-between">
+            <!-- Logo -->
+
+            <a href="/" class="flex items-center gap-4">
+              <img
+                alt=""
+                src="{% static 'website/images/logo.png' %}"
+                class="w-14 h-14 object-contain"
+              />
+
+              <div class="leading-none">
+                <p class="text-blue-100 text-xs font-medium tracking-wide">
+                  دبیرستان دوره اول
+                </p>
+
+                <h2 class="text-white text-xl font-extrabold mt-1">
+                  میرزاحسن افشار
+                </h2>
+              </div>
+            </a>
+
+            <!-- Menu -->
+
+            <ul
+              class="hidden lg:flex items-center gap-6 xl:gap-8 font-semibold text-[14px] xl:text-[15px] ml-10 xl:ml-16 text-white"
+            >
+              <li>
+                <a
+                  href="/news/"
+                  class="relative px-2 py-1 group transition duration-300 hover:text-white"
+                >
+                  اخبار
+                  <span
+                    class="absolute right-0 -bottom-2 {% if request.path == '/news/' %}w-full{% else %}w-0{% endif %} h-[2px] bg-white transition-all duration-300 group-hover:w-full"
+                  ></span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="{% url 'news:important_news' %}"
+                  class="relative px-2 py-1 group transition duration-300 hover:text-white whitespace-nowrap"
+                >
+                  اخبار مهم
+                  <span
+                    class="absolute right-0 -bottom-2 {% if request.resolver_match.url_name == 'important_news' or request.resolver_match.url_name == 'news_detail' %}w-full{% else %}w-0{% endif %} h-[2px] bg-white transition-all duration-300 group-hover:w-full"
+                  ></span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="{% url 'news:school_closures' %}"
+                  class="relative px-2 py-1 group transition duration-300 hover:text-white whitespace-nowrap"
+                >
+                  تعطیلی مدارس
+                  <span
+                    class="absolute right-0 -bottom-2 {% if request.resolver_match.url_name == 'school_closures' %}w-full{% else %}w-0{% endif %} h-[2px] bg-white transition-all duration-300 group-hover:w-full"
+                  ></span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/activities/"
+                  class="relative px-2 py-1 group transition duration-300 hover:text-white"
+                >
+                  فعالیت ها
+                  <span
+                    class="absolute right-0 -bottom-2 {% if request.path == '/activities/' %}w-full{% else %}w-0{% endif %} h-[2px] bg-white transition-all duration-300 group-hover:w-full"
+                  ></span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/staff/"
+                  class="relative px-2 py-1 group transition duration-300 hover:text-white"
+                >
+                  کادر فنی
+                  <span
+                    class="absolute right-0 -bottom-2 {% if request.path == '/staff/' %}w-full{% else %}w-0{% endif %} h-[2px] bg-white transition-all duration-300 group-hover:w-full"
+                  ></span>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/top-students/"
+                  class="relative px-2 py-1 group transition duration-300 hover:text-white whitespace-nowrap"
+                >
+                  دانش آموزان برتر
+                  <span
+                    class="absolute right-0 -bottom-2 {% if request.path == '/top-students/' %}w-full{% else %}w-0{% endif %} h-[2px] bg-white transition-all duration-300 group-hover:w-full"
+                  ></span>
+                </a>
+              </li>
+            </ul>
+
+            <!-- Admin Login -->
+
+            <div class="hidden lg:flex items-center">
+              <a
+                href="/admin/"
+                class="group relative flex items-center gap-2.5 bg-white text-[#1654d1] rounded-full pl-6 pr-3.5 py-2.5 font-bold text-[15px] shadow-[0_8px_20px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-blue-50 hover:shadow-[0_10px_25px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <i class="fa-solid fa-user-shield text-base"></i>
+                <span>ورود مدیران</span>
+              </a>
+            </div>
+
+            <!-- Hamburger -->
+            <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5">
+              <span
+                class="line block w-6 h-[2px] rounded-full bg-white transition-all duration-300"
+              ></span>
+              <span
+                class="line block w-6 h-[2px] rounded-full bg-white transition-all duration-300"
+              ></span>
+              <span
+                class="line block w-6 h-[2px] rounded-full bg-white transition-all duration-300"
+              ></span>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+
+          <div
+            id="mobile-menu"
+            class="fixed top-0 right-[-100%] w-[320px] max-w-full h-screen overflow-y-auto bg-white shadow-[0_10px_40px_rgba(0,0,0,.18)] duration-500"
+          >
+            <div class="p-7 border-b flex items-center justify-between">
+              <h2 class="text-2xl font-bold text-blue-800">منوی سایت</h2>
+
+              <button
+                id="close-menu"
+                class="text-3xl leading-none text-slate-500 hover:text-slate-800 transition"
+              >
+                &times;
+              </button>
+            </div>
+
+            <ul class="flex flex-col p-6 gap-7 font-semibold text-lg text-slate-800">
+              <li>
+                <a href="/news/" {% if request.path == '/news/' %}class="text-blue-700"{% endif %}>اخبار</a>
+              </li>
+              <li>
+                <a href="{% url 'news:important_news' %}" {% if request.resolver_match.url_name == 'important_news' or request.resolver_match.url_name == 'news_detail' %}class="text-blue-700"{% endif %}>اخبار مهم</a>
+              </li>
+              <li>
+                <a href="{% url 'news:school_closures' %}" {% if request.resolver_match.url_name == 'school_closures' %}class="text-blue-700"{% endif %}>تعطیلی مدارس</a>
+              </li>
+              <li>
+                <a href="/activities/" {% if request.path == '/activities/' %}class="text-blue-700"{% endif %}>فعالیت ها</a>
+              </li>
+              <li>
+                <a href="/staff/" {% if request.path == '/staff/' %}class="text-blue-700"{% endif %}>کادر فنی</a>
+              </li>
+              <li>
+                <a href="/top-students/" {% if request.path == '/top-students/' %}class="text-blue-700"{% endif %}>دانش آموزان برتر</a>
+              </li>
+
+              <hr />
+
+              <a
+                href="/admin/"
+                class="w-full flex items-center justify-center gap-3 bg-blue-600 text-white rounded-2xl px-6 h-12 font-bold shadow-lg hover:bg-blue-700 transition"
+              >
+                <i class="fa-solid fa-user-shield text-lg"></i>
+                ورود مدیران
+              </a>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-[#061a36] text-white pt-16 pb-6">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-12 text-right">
+          <div>
+            <h3 class="text-xl font-bold mb-6">صفحات سایت</h3>
+
+            <ul class="grid grid-cols-2 gap-x-6 gap-y-4 text-gray-300">
+              <li>
+                <a href="/news/" class="hover:text-white transition duration-300">
+                  اخبار
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'news:important_news' %}" class="hover:text-white transition duration-300">
+                  اخبار مهم
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'news:school_closures' %}" class="hover:text-white transition duration-300">
+                  تعطیلی مدارس
+                </a>
+              </li>
+              <li>
+                <a href="/activities/" class="hover:text-white transition duration-300">
+                  فعالیت‌ها
+                </a>
+              </li>
+              <li>
+                <a href="/staff/" class="hover:text-white transition duration-300">
+                  کادر فنی
+                </a>
+              </li>
+              <li>
+                <a href="/top-students/" class="hover:text-white transition duration-300">
+                  دانش‌آموزان برتر
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="order-2">
+            <h3 class="text-xl font-bold mb-6">ارتباط با ما</h3>
+
+            <div class="space-y-5 text-gray-300">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-phone text-blue-400 mt-1"></i>
+                <span> 05136221502 </span>
+              </div>
+
+              <div class="flex items-start gap-3 leading-7">
+                <i class="fa-solid fa-location-dot text-blue-400 mt-1"></i>
+                <span>
+                  مشهد، ادیب نیشابوری، بلوار اندیشه، دبیرستان پسرانه افشار
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-3">
+            <h3 class="text-xl font-bold mb-6">ما را دنبال کنید</h3>
+
+            <div class="flex gap-4 mb-8">
+              <a
+                href="#"
+                class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-blue-500 transition"
+              >
+                <i class="fa-brands fa-telegram text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-green-500 transition"
+              >
+                <i class="fa-solid fa-paper-plane text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-yellow-500 transition"
+              >
+                <i class="fa-solid fa-graduation-cap text-xl"></i>
+              </a>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <img
+                src="{% static 'website/images/techcode-logo.png' %}"
+                class="w-16 h-16 object-contain"
+                alt="Techcode"
+              />
+
+              <div>
+                <p class="font-extrabold text-xl tracking-widest">TECHCODE</p>
+                <p class="text-gray-400 text-sm">Web Development Team</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 mt-12 pt-6 text-center">
+          <p class="text-gray-400 text-sm">
+            © 1405 مدرسه میرزا حسن افشار | طراحی و توسعه توسط TECHCODE
+          </p>
+        </div>
+      </div>
+
+      <button
+        id="scrollTop"
+        class="fixed bottom-8 left-8 w-12 h-12 rounded-full bg-blue-700 text-white shadow-xl hidden hover:bg-blue-800 transition"
+      >
+        ↑
+      </button>
+    </footer>
+
+    <!-- ===========================
+        NEWS DETAIL MODAL (shared)
+=========================== -->
+
+    <div
+      id="newsDetailModal"
+      class="fixed inset-0 z-[99999] hidden items-center justify-center px-4"
+    >
+      <div
+        id="newsDetailOverlay"
+        class="absolute inset-0 bg-[#071b3a]/70 backdrop-blur-sm"
+      ></div>
+
+      <div
+        id="newsDetailBox"
+        class="relative w-full max-w-2xl max-h-[86vh] overflow-y-auto bg-white rounded-[28px] shadow-2xl scale-95 opacity-0 transition-all duration-300"
+      >
+        <div id="newsDetailImageWrap" class="hidden">
+          <img id="newsDetailImage" src="" alt="" class="w-full h-56 sm:h-72 object-cover rounded-t-[28px]" />
+        </div>
+
+        <button
+          id="closeNewsDetailModal"
+          class="absolute left-5 top-5 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-slate-700 text-2xl leading-none flex items-center justify-center transition shadow-md"
+        >
+          &times;
+        </button>
+
+        <div class="px-7 sm:px-9 pb-9 pt-7">
+          <span id="newsDetailDate" class="inline-flex items-center gap-2 text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1.5 rounded-full">
+            <i class="fa-regular fa-calendar"></i>
+            <span></span>
+          </span>
+
+          <h3 id="newsDetailTitle" class="text-2xl font-extrabold text-slate-900 mt-4"></h3>
+
+          <div id="newsDetailBody" class="mt-6 text-slate-600 leading-9 space-y-4"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.STATIC_BASE_URL = "{% static '' %}";
+    </script>
+    <script src="{% static 'website/js/script.js' %}"></script>
+    <script src="{% static 'website/js/news-modal.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

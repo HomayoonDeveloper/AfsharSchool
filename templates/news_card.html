@@ -1,0 +1,36 @@
+{% load static %}
+<article
+  class="news-card"
+  data-news-title="{{ item.title }}"
+  data-news-date="{{ item.created_at|date:'d F Y' }}"
+  {% if item.image %}data-news-image="{{ item.image.url }}"{% endif %}
+>
+  {% if item.image %}
+    <div class="news-card-image">
+      <img
+        src="{{ item.image.url }}"
+        alt="{{ item.title }}"
+        loading="lazy"
+      />
+    </div>
+  {% endif %}
+
+  <div class="news-card-body">
+    <span class="news-card-date">
+      <i class="fa-regular fa-calendar"></i>
+      {{ item.created_at|date:"d F Y" }}
+    </span>
+
+    <h3 class="news-card-title">{{ item.title }}</h3>
+
+    <p class="news-card-excerpt">{{ item.content|truncatewords:22 }}</p>
+
+    <button type="button" class="news-card-more">
+      ادامه مطلب
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+  </div>
+
+  <!-- محتوای کامل خبر، فقط برای پر کردن مودال - در صفحه دیده نمی‌شود -->
+  <div class="news-full-content hidden">{{ item.content|linebreaks }}</div>
+</article>

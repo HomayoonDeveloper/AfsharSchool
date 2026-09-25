@@ -1,0 +1,313 @@
+/* =========================================
+   دانش‌آموزان برتر — Hall of Fame Style
+========================================= */
+
+.ts-hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+}
+
+.ts-hero-shape-1 {
+  width: 320px;
+  height: 320px;
+  background: #60a5fa;
+  top: -100px;
+  left: -60px;
+}
+
+.ts-hero-shape-2 {
+  width: 220px;
+  height: 220px;
+  background: #fbbf24;
+  bottom: -60px;
+  right: 8%;
+  opacity: 0.18;
+}
+
+/* ===== Stat strip ===== */
+.ts-stats {
+  position: relative;
+  background: #fff;
+  border-radius: 26px;
+  box-shadow: 0 20px 55px rgba(15, 23, 42, 0.14);
+  border: 1px solid rgba(37, 99, 235, 0.08);
+}
+
+.ts-stat {
+  text-align: center;
+  padding: 26px 12px;
+}
+
+.ts-stat-num {
+  font-size: 34px;
+  font-weight: 800;
+  color: #1654d1;
+  line-height: 1;
+}
+
+.ts-stat-label {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* ===== Section headers ===== */
+.ts-section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+/* ===== Divider between sections ===== */
+.ts-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.ts-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to left, transparent, rgba(37, 99, 235, 0.25), transparent);
+}
+
+.ts-divider-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.28);
+}
+
+/* ===== Spotlight Cards ===== */
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .spotlight-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.spotlight-card {
+  position: relative;
+  background: #fff;
+  border-radius: 26px;
+  padding: 30px 22px 26px;
+  text-align: center;
+  border: 1px solid rgba(37, 99, 235, 0.08);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  opacity: 0;
+  transform: translateY(18px);
+  animation: spotlightIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--delay, 0s);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+@keyframes spotlightIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spotlight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 26px 55px rgba(15, 76, 219, 0.18);
+  border-color: transparent;
+}
+
+/* ===== Avatar block ===== */
+.spotlight-avatar-wrap {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  margin: 0 auto 16px;
+}
+
+.spotlight-ring {
+  position: absolute;
+  inset: -8px;
+  animation: ringSpin 14s linear infinite;
+}
+
+.ring-circle {
+  border-radius: 50%;
+  border: 2px dashed rgba(37, 99, 235, 0.35);
+}
+
+.ring-hex {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: conic-gradient(
+    from 0deg,
+    rgba(217, 119, 6, 0.55),
+    rgba(217, 119, 6, 0.05) 30%,
+    rgba(217, 119, 6, 0.05) 70%,
+    rgba(217, 119, 6, 0.55)
+  );
+}
+
+@keyframes ringSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spotlight-avatar {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
+  animation: avatarFloat 4.5s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+}
+
+.avatar-circle {
+  border-radius: 50%;
+}
+
+.avatar-hex {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+@keyframes avatarFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.spotlight-card:hover .spotlight-ring {
+  animation-duration: 3.5s;
+}
+
+.spotlight-badge {
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #f5f8fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #1654d1;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.spotlight-card:hover .spotlight-badge {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.spotlight-name {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.spotlight-grade {
+  font-size: 12.5px;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.spotlight-info {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.spotlight-subject {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #1654d1;
+}
+
+.spotlight-festival {
+  margin-top: 9px;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.spotlight-rank {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #b45309;
+  background: #fffbeb;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #fde68a;
+}
+
+/* Admission cards: swap ribbon color to a success/acceptance tone */
+#admissionGrid .spotlight-rank {
+  color: #047857;
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+#admissionGrid .spotlight-rank i {
+  color: #047857;
+}
+
+#admissionGrid .ring-hex,
+#admissionGrid .ring-circle {
+  border-color: rgba(5, 150, 105, 0.35);
+}
+
+/* Competition section: cooler ring tint */
+#competitionGrid .ring-hex {
+  background: conic-gradient(
+    from 0deg,
+    rgba(124, 58, 237, 0.55),
+    rgba(124, 58, 237, 0.05) 30%,
+    rgba(124, 58, 237, 0.05) 70%,
+    rgba(124, 58, 237, 0.55)
+  );
+}

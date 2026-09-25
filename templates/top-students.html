@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}دانش‌آموزان برتر | دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block meta_description %}معرفی دانش‌آموزان افتخارآفرین دبیرستان دوره اول میرزاحسن افشار{% endblock %}
+
+{% block content %}
+  <section class="pt-28 pb-16 md:pt-32 md:pb-20 bg-[#f5f8fc]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="rounded-3xl overflow-hidden shadow-2xl">
+        <img
+          src="{% static 'website/images/selected-students.jpg' %}"
+          alt="دانش آموزان منتخب میرزا حسن افشار"
+          class="w-full h-[220px] sm:h-[320px] md:h-[420px] lg:h-[500px] object-cover"
+        />
+      </div>
+    </div>
+  </section>
+{% endblock %}
